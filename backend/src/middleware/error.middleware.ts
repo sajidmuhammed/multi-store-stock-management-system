@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { ZodError } from "zod";
 
-import { AppError } from "../shared/constants/app_error";
+import { AppError } from "../shared/errors/app_error";
 import { sendError } from "../shared/response/api-response";
 import { HTTP_STATUS } from "../shared/constants/http_status";
 import { ERROR_CODES } from "../shared/constants/error_codes";

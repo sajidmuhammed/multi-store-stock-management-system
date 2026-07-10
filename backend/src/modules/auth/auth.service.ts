@@ -2,7 +2,7 @@ import { UserModel } from "./user.model";
 import { RegisterInput, LoginInput } from "./auth.validation";
 import { hashPassword, comparePassword } from "../../shared/utils/password";
 import { generateToken } from "../../shared/utils/jwt";
-import { AppError } from "../../shared/constants/app_error";
+import { AppError } from "../../shared/errors/app_error";
 import { HTTP_STATUS } from "../../shared/constants/http_status";
 import { ERROR_CODES } from "../../shared/constants/error_codes";
 import { UserRole } from "./user.role.enum";
