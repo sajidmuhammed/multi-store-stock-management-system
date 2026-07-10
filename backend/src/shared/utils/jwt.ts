@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 import { config } from "../../config/env";
-import { JwtPayload } from "../types/jwt";
+import { JwtPayload } from "../../modules/auth/type";
 
 export const generateToken = (
   payload: JwtPayload

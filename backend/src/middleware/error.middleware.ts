@@ -1,36 +1,44 @@
 import { NextFunction, Request, Response } from "express";
+import { ZodError } from "zod";
+
 import { AppError } from "../shared/constants/app_error";
 import { sendError } from "../shared/response/api-response";
 import { HTTP_STATUS } from "../shared/constants/http_status";
 import { ERROR_CODES } from "../shared/constants/error_codes";
+import { logger } from "../shared/logger/logger";
 
 export const errorHandler = (
   error: Error,
-  req: Request,
+  _req: Request,
   res: Response,
-  next: NextFunction
+  _next: NextFunction
 ) => {
 
-  if (error instanceof AppError) {
+  logger.error(`Error: ${error.message}`);
 
+  if (error instanceof AppError) {
     return sendError(
       res,
       error.statusCode,
       error.errorCode,
       error.message
     );
-
   }
 
-  console.error(error);
+  if (error instanceof ZodError) {
+    return sendError(
+      res,
+      HTTP_STATUS.BAD_REQUEST,
+      ERROR_CODES.VALIDATION_ERROR,
+      error.issues[0].message
+    );
+  }
 
   return sendError(
     res,
     HTTP_STATUS.INTERNAL_SERVER_ERROR,
     ERROR_CODES.INTERNAL_SERVER_ERROR,
-    "Something went wrong."
+    "Internal server error."
   );
-                      
-
 };
 

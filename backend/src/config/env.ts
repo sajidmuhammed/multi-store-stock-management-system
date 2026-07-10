@@ -21,4 +21,7 @@ export const config = {
   mongoUri: process.env.MONGODB_URI as string,
   jwtSecret: process.env.JWT_SECRET as string,
   saltRounds: Number(process.env.SALT_ROUNDS),
+  adminName: process.env.ADMIN_NAME as string,
+  adminEmail: process.env.ADMIN_EMAIL as string,
+  adminPassword: process.env.ADMIN_PASSWORD as string
 };

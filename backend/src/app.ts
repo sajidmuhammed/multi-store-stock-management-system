@@ -4,6 +4,7 @@ import helmet from "helmet";
 import morgan from "morgan";
 import { HTTP_STATUS } from "./shared/constants/http_status";
 import { errorHandler } from "./middleware/error.middleware";
+import authRoutes from "./modules/auth/auth.routes";
 
 const app = express();
 
@@ -22,7 +23,10 @@ app.get('/health', (_req, res) => {
          message: 'Server is healthy' });
 })
 
+app.use("/api/auth", authRoutes);
+
 app.use(errorHandler)
 
 
 export default app;
+
