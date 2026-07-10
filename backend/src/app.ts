@@ -7,6 +7,7 @@ import { errorHandler } from "./middleware/error.middleware";
 import authRoutes from "./modules/auth/auth.routes";
 import productRoutes from "./modules/product/product.routes";
 import storeRoutes from "./modules/store/store.routes";
+import inventoryRoutes from "./modules/inventory/inventory.routes";
 
 const app = express();
 
@@ -28,6 +29,7 @@ app.get('/health', (_req, res) => {
 app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/stores", storeRoutes);
+app.use("/api/inventory", inventoryRoutes);
 
 app.use(errorHandler)
 
