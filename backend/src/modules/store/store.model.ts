@@ -1,0 +1,22 @@
+import { Schema, model, Document } from "mongoose";
+
+export interface IStore extends Document {
+  name: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+const storeSchema = new Schema<IStore>(
+  {
+    name: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
+
+export const Store = model<IStore>("Store", storeSchema);

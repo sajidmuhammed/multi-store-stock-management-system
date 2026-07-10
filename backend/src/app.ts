@@ -6,6 +6,7 @@ import { HTTP_STATUS } from "./shared/constants/http_status";
 import { errorHandler } from "./middleware/error.middleware";
 import authRoutes from "./modules/auth/auth.routes";
 import productRoutes from "./modules/product/product.routes";
+import storeRoutes from "./modules/store/store.routes";
 
 const app = express();
 
@@ -26,6 +27,7 @@ app.get('/health', (_req, res) => {
 
 app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
+app.use("/api/stores", storeRoutes);
 
 app.use(errorHandler)
 
