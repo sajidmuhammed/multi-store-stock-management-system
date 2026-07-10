@@ -5,6 +5,7 @@ import morgan from "morgan";
 import { HTTP_STATUS } from "./shared/constants/http_status";
 import { errorHandler } from "./middleware/error.middleware";
 import authRoutes from "./modules/auth/auth.routes";
+import productRoutes from "./modules/product/product.routes";
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.get('/health', (_req, res) => {
 })
 
 app.use("/api/auth", authRoutes);
+app.use("/api/products", productRoutes);
 
 app.use(errorHandler)
 
