@@ -5,7 +5,8 @@ dotenv.config();
 const requiredEnvVariables = [
     "PORT",
     "MONGODB_URI",
-    "JWT_SECRET"
+    "JWT_SECRET",
+    "SALT_ROUNDS"
 ] as const;
 
 requiredEnvVariables.forEach((variable) => {
@@ -19,4 +20,5 @@ export const config = {
   port: Number(process.env.PORT),
   mongoUri: process.env.MONGODB_URI as string,
   jwtSecret: process.env.JWT_SECRET as string,
+  saltRounds: Number(process.env.SALT_ROUNDS),
 };
