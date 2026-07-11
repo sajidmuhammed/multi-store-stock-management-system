@@ -8,6 +8,7 @@ import authRoutes from "./modules/auth/auth.routes";
 import productRoutes from "./modules/product/product.routes";
 import storeRoutes from "./modules/store/store.routes";
 import inventoryRoutes from "./modules/inventory/inventory.routes";
+import { setupSwagger } from "./config/swagger";
 
 const app = express();
 
@@ -18,6 +19,8 @@ app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded( { extended: true} ));
+
+setupSwagger(app);
 
 //health check api
 
