@@ -21,7 +21,7 @@ export const getStoreById = async (
 
 export const createStore = async (
   data: CreateStoreRequest
-): Promise<Store> => {
+): Promise<Store> => {debugger
   const response = await api.post(
     "/stores",
     data

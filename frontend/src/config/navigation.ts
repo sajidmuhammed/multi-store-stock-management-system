@@ -2,7 +2,6 @@ import {
   ArchiveBoxIcon,
   BuildingStorefrontIcon,
   CubeIcon,
-  ArrowPathRoundedSquareIcon,
 } from "@heroicons/react/24/outline";
 
 import { UserRole } from "../types/common.types";
@@ -28,11 +27,6 @@ export const adminNavigation: NavigationItem[] = [
     name: "Inventory",
     path: "/inventory",
     icon: ArchiveBoxIcon,
-  },
-  {
-    name: "Transfers",
-    path: "/inventory/transfers",
-    icon: ArrowPathRoundedSquareIcon,
   },
 ];
 

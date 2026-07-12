@@ -50,7 +50,7 @@ export default function AdjustStockForm({
   ) => {
     try {
       setLoading(true);
-
+console.log('hit happended')
       await onSubmit(data);
 
       reset();
@@ -115,11 +115,15 @@ export default function AdjustStockForm({
       <FormField
         label="Stock Change"
         required
+        error={errors.change?.message}
       >
         <Input
           type="number"
           placeholder="Example: 10 or -5"
-          {...register("change")}
+          {...register("change", {
+            valueAsNumber: true,
+          })}
+          error={errors.change?.message}
         />
       </FormField>
 

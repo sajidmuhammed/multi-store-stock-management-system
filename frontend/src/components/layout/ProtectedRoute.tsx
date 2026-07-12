@@ -12,7 +12,7 @@ export default function ProtectedRoute({
 }: ProtectedRouteProps) {
   const { isAuthenticated, user } = useAuth();
 
-  if (!isAuthenticated) {
+  if (!isAuthenticated) {debugger
     return <Navigate to="/login" replace />;
   }
 

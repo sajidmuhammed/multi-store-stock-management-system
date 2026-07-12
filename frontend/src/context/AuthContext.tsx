@@ -18,6 +18,7 @@ interface AuthContextType {
   user: User | null;
   token: string | null;
   isAuthenticated: boolean;
+  isInitialized: boolean;
   login: (token: string, user: User) => void;
   logout: () => void;
 }
@@ -35,6 +36,7 @@ export function AuthProvider({ children }: Props) {
     token: null,
     user: null,
   });
+  const [isInitialized, setIsInitialized] = useState(false);
 
   useEffect(() => {
     const token = tokenStorage.getToken();
@@ -46,6 +48,8 @@ export function AuthProvider({ children }: Props) {
         user: JSON.parse(user),
       });
     }
+
+    setIsInitialized(true);
   }, []);
 
   const login = (token: string, user: User) => {
@@ -66,17 +70,23 @@ export function AuthProvider({ children }: Props) {
       user: null,
     });
   };
+  console.log(auth.token,'hhh')
 
   const value = useMemo(
     () => ({
       user: auth.user,
       token: auth.token,
       isAuthenticated: Boolean(auth.token),
+      isInitialized,
       login,
       logout,
     }),
-    [auth]
+    [auth, isInitialized]
   );
+
+  if (!isInitialized) {
+    return null;
+  }
 
   return (
     <AuthContext.Provider value={value}>

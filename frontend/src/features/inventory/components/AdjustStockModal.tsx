@@ -34,7 +34,7 @@ export default function AdjustStockModal({
       <AdjustStockForm
         products={products}
         stores={stores}
-        onSubmit={async (data) => {
+        onSubmit={async (data) => {debugger
           await onSubmit(data);
           onClose();
         }}

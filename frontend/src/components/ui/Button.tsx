@@ -1,5 +1,6 @@
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 import clsx from "clsx";
+import { Loading } from "../shared";
 
 type ButtonVariant =
   | "primary"
@@ -68,7 +69,7 @@ export default function Button({
         className
       )}
     >
-      {loading ? "Loading..." : children}
+      {loading ? "loading..." : children}
     </button>
   );
 }

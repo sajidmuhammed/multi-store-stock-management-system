@@ -14,7 +14,7 @@ class StoreService {
     const existingStore = await Store.exists({
       name: data.name,
     });
-
+console.log('entered')
     if (existingStore) {
       throw new AppError(
         HTTP_STATUS.CONFLICT,
@@ -25,6 +25,7 @@ class StoreService {
 
     const store = await Store.create({
       name: data.name,
+      location: data.location,
     });
 
     logger.info(

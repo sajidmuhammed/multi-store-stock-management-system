@@ -15,6 +15,7 @@ import type {
   CreateProductRequest,
   Product,
 } from "../types/product.types";
+import { Loading } from "../../../components/shared";
 
 export default function ProductsPage() {
   const { user } = useAuth();
@@ -63,7 +64,7 @@ export default function ProductsPage() {
       </div>
 
       {loading ? (
-        <p>Loading...</p>
+        <p><Loading /></p>
       ) : (
         <ProductTable
           products={products}
