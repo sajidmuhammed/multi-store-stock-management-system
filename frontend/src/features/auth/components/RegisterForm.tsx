@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -40,6 +41,9 @@ export default function RegisterForm() {
       });
 
       navigate("/login");
+      toast.success("Registration successful! Please login.");
+    }catch(error){
+      toast.error((error as Error).message || "Registration failed. Please try again.");
     } finally {
       setLoading(false);
     }

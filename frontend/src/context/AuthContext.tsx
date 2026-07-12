@@ -6,6 +6,7 @@ import {
   useState,
 } from "react";
 
+import toast from "react-hot-toast";
 import type { User } from "../features/auth/types/auth.types";
 import { tokenStorage } from "../lib/token";
 
@@ -60,6 +61,8 @@ export function AuthProvider({ children }: Props) {
       token,
       user,
     });
+
+    toast.success("Logged in successfully");
   };
 
   const logout = () => {
@@ -69,8 +72,9 @@ export function AuthProvider({ children }: Props) {
       token: null,
       user: null,
     });
+
+    toast.success("Logged out successfully");
   };
-  console.log(auth.token,'hhh')
 
   const value = useMemo(
     () => ({

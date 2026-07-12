@@ -39,20 +39,20 @@ export default function ProductTable({
     },
   ];
 
-  if (user?.role === UserRole.ADMIN) {
-    columns.push({
-      header: "Actions",
-      accessor: "actions",
-      render: (product) => (
-        <Button
-          size="sm"
-          onClick={() => onEdit(product)}
-        >
-          Edit
-        </Button>
-      ),
-    });
-  }
+  // if (user?.role === UserRole.ADMIN) {
+  //   columns.push({
+  //     header: "Actions",
+  //     accessor: "actions",
+  //     render: (product) => (
+  //       <Button
+  //         size="sm"
+  //         onClick={() => onEdit(product)}
+  //       >
+  //         Edit
+  //       </Button>
+  //     ),
+  //   });
+  // }
 
   return (
     <DataTable
