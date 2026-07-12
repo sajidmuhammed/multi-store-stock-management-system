@@ -1,4 +1,8 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+import {
+  Navigate,
+  Route,
+  Routes,
+} from "react-router-dom";
 
 import AppLayout from "./components/layout/AppLayout";
 import ProtectedRoute from "./components/layout/ProtectedRoute";
@@ -7,7 +11,7 @@ import LoginPage from "./features/auth/pages/Login";
 import RegisterPage from "./features/auth/pages/Register";
 
 import ProductsPage from "./features/products/pages/ProductsPage";
-import StoresPage from "./features/stores/pages/StoresPage";
+import StoresPage from "./features/store/pages/StoresPage";
 import InventoryPage from "./features/inventory/pages/InventoryPage";
 
 import { UserRole } from "./types/common.types";
@@ -15,7 +19,7 @@ import { UserRole } from "./types/common.types";
 export default function AppRoutes() {
   return (
     <Routes>
-      {/* Public Routes */}
+      {/* Public */}
 
       <Route
         path="/login"
@@ -41,12 +45,12 @@ export default function AppRoutes() {
             element={<InventoryPage />}
           />
 
-          {/* Admin */}
-
           <Route
             element={
               <ProtectedRoute
-                allowedRoles={[UserRole.ADMIN]}
+                allowedRoles={[
+                  UserRole.ADMIN,
+                ]}
               />
             }
           >
@@ -57,6 +61,16 @@ export default function AppRoutes() {
           </Route>
         </Route>
       </Route>
+
+      <Route
+        path="/"
+        element={
+          <Navigate
+            to="/products"
+            replace
+          />
+        }
+      />
 
       <Route
         path="*"
